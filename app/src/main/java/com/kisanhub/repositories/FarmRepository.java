@@ -7,6 +7,11 @@ public class FarmRepository {
         farmDao = db.farmDao();
         transactionDao = db.transactionDao();
     }
+    
+    public void insertFarm(Farm farm) { AppDatabase.databaseWriteExecutor.execute(() -> farmDao.insert(farm)); }
+    public void updateFarm(Farm farm) { AppDatabase.databaseWriteExecutor.execute(() -> farmDao.update(farm)); }
+    public void deleteFarm(Farm farm) { AppDatabase.databaseWriteExecutor.execute(() -> farmDao.delete(farm)); }
+    
 
     // For Profile Dashboard
     public LiveData<Integer> getFarmCount(int userId) { return farmDao.getFarmCountForUser(userId); }
