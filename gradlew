@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 #
 # Copyright 2015 the original author or authors.
@@ -132,10 +132,10 @@ fi
 CLASSPATH="$APP_HOME/gradle/wrapper/gradle-wrapper.jar"
 
 # Split up the JVM options string into an array, following the shell quoting and substitution rules
-function splitJvmOpts() {
+function splitJovmOpts() {
     JVM_OPTS=("$@")
 }
-eval splitJvmOpts $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS
+eval splitJovmOpts $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS
 
 # Escape the parameters
 JVM_OPTS_ESCAPED=()
