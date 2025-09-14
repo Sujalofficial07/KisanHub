@@ -10,7 +10,6 @@ import com.kisanhub.database.entity.Transaction;
 import com.kisanhub.repositories.FarmRepository;
 import java.util.List;
 
-// THIS IS THE CORRECT CLASS FOR THIS FILE
 public class FarmDetailsViewModel extends AndroidViewModel {
     private final FarmRepository repository;
     private final LiveData<List<Transaction>> transactions;
