@@ -1,3 +1,10 @@
+package com.kisanhub.database.dao;
+
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.Query;
+import com.kisanhub.database.entity.User;
+
 @Dao
 public interface UserDao {
     @Insert
