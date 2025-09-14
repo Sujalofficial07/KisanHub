@@ -1,9 +1,19 @@
-public class AuthViewModel extends AndroidViewModel {
-    private UserRepository userRepository;
-    private MutableLiveData<User> authenticatedUser = new MutableLiveData<>();
-    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
+package com.kisanhub.viewmodels;
 
-    public AuthViewModel(Application application) {
+import android.app.Application;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import com.kisanhub.database.entity.User;
+import com.kisanhub.repositories.UserRepository;
+
+public class AuthViewModel extends AndroidViewModel {
+    private final UserRepository userRepository;
+    private final MutableLiveData<User> authenticatedUser = new MutableLiveData<>();
+    private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
+
+    public AuthViewModel(@NonNull Application application) {
         super(application);
         userRepository = new UserRepository(application);
     }
@@ -23,12 +33,11 @@ public class AuthViewModel extends AndroidViewModel {
         }
         User newUser = new User();
         newUser.username = username;
-        newUser.password = password; // Note: In a real app, hash the password!
+        newUser.password = password; // In a real app, HASH THE PASSWORD!
 
         userRepository.signup(newUser, success -> {
             if (success) {
-                // For simplicity, automatically log in after signup
-                login(username, password);
+                login(username, password); // Auto-login after signup
             } else {
                 errorMessage.postValue("Username already exists.");
             }
