@@ -1,29 +1,114 @@
-<LinearLayout android:orientation="vertical" ...>
-    <com.google.android.material.textfield.TextInputLayout
-        android:hint="Amount" ...>
-        <TextInputEditText android:id="@+id/editText_amount" android:inputType="numberDecimal"/>
-    </com.google.android.material.textfield.TextInputLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.AddTransactionFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:hint="Description" ...>
-        <TextInputEditText android:id="@+id/editText_description"/>
-    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_add_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="Add Transaction" />
 
-    <!-- Category (Spinner or AutoCompleteTextView) -->
-    <Spinner android:id="@+id/spinner_category" ... />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <!-- Type (Income/Expense) -->
-    <RadioGroup android:id="@+id/radioGroup_type" ...>
-        <RadioButton android:id="@+id/radio_income" android:text="Income"/>
-        <RadioButton android:id="@+id/radio_expense" android:text="Expense"/>
-    </RadioGroup>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <!-- Date Picker -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_date_picker"
-        android:text="Select Date" ... />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField_amount"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Amount">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_save_transaction"
-        android:text="Save Transaction" ... />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField_description"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Description">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField_category"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Category">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoComplete_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/TextAppearance.Material3.LabelLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Income" />
+
+                <RadioButton
+                    android:id="@+id/radio_expense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Expense" />
+            </RadioGroup>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_date_picker"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="Select Date" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_save_transaction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Transaction" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
