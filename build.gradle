@@ -1,45 +1,5 @@
-# This block is for demonstration purposes to show the gradle dependencies.
-# It is not meant to be executed.
-
-# build.gradle (Module: app)
-
-# Apply plugins
-# plugins {
-#     id 'com.android.application'
-# }
-
-# android {
-#     namespace 'com.kisanhub'
-#     compileSdk 33
-
-#     defaultConfig {
-#         applicationId "com.kisanhub"
-#         minSdk 24
-#         targetSdk 33
-#         versionCode 1
-#         versionName "1.0"
-#         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-#     }
-
-#     buildFeatures {
-#         viewBinding true
-#     }
-# }
-
-# dependencies {
-#     implementation 'androidx.appcompat:appcompat:1.6.1'
-#     implementation 'com.google.android.material:material:1.9.0'
-#     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-
-#     // ViewModel and LiveData
-#     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2"
-#     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.2"
-
-#     // Room
-#     implementation "androidx.room:room-runtime:2.5.2"
-#     annotationProcessor "androidx.room:room-compiler:2.5.2"
-
-#     // Navigation Component
-#     implementation "androidx.navigation:navigation-fragment-ktx:2.7.4"
-#     implementation "androidx.navigation:navigation-ui-ktx:2.7.4"
-# }
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    // Registers the Android Gradle Plugin for application modules
+    id 'com.android.application' version '8.2.0' apply false
+}
