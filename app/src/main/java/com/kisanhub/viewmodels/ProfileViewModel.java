@@ -1,9 +1,17 @@
-public class ProfileViewModel extends AndroidViewModel {
-    private FarmRepository farmRepository;
-    // Assuming userId is fetched after login and stored, e.g., in SharedPreferences
-    private int userId = 1; // Placeholder for the current user's ID
+package com.kisanhub.viewmodels;
 
-    public ProfileViewModel(Application application) {
+import android.app.Application;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import com.kisanhub.repositories.FarmRepository;
+
+public class ProfileViewModel extends AndroidViewModel {
+    private final FarmRepository farmRepository;
+    // Placeholder for the current user's ID after login
+    private final int userId = 1;
+
+    public ProfileViewModel(@NonNull Application application) {
         super(application);
         farmRepository = new FarmRepository(application);
     }
