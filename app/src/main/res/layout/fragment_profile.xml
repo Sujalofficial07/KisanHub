@@ -1,0 +1,41 @@
+<androidx.constraintlayout.widget.ConstraintLayout ...>
+    
+    <!-- Profile Header -->
+    <ImageView
+        android:id="@+id/imageView_profile"
+        android:src="@drawable/ic_farmer_avatar"
+        ... />
+    <TextView
+        android:id="@+id/textView_greeting"
+        android:text="Hello, [Farmer]!"
+        style="@style/TextAppearance.Material3.TitleLarge"
+        ... />
+
+    <!-- Dashboard Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_dashboard" ...>
+        <LinearLayout android:orientation="vertical" ...>
+            <TextView
+                android:text="Your Dashboard"
+                style="@style/TextAppearance.Material3.HeadlineSmall" ... />
+
+            <!-- Stats -->
+            <TextView android:id="@+id/textView_total_farms" android:text="Total Farms: 0" ... />
+            <TextView android:id="@+id/textView_total_income" android:text="Total Income: ₹0" ... />
+            <TextView android:id="@+id/textView_total_expenses" android:text="Total Expenses: ₹0" ... />
+
+            <!-- Net Profit/Loss -->
+            <TextView
+                android:id="@+id/textView_net_profit"
+                android:text="Net Profit: ₹0"
+                android:textStyle="bold"
+                style="@style/TextAppearance.Material3.TitleMedium" ... />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_view_farms"
+        android:text="View My Farms"
+        ... />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
