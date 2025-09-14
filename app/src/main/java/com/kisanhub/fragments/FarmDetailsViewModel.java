@@ -1,15 +1,26 @@
-// Inside onCreateView
-int farmId = FarmDetailsFragmentArgs.fromBundle(getArguments()).getFarmId();
-FarmDetailsViewModel.Factory factory = new FarmDetailsViewModel.Factory(requireActivity().getApplication(), farmId);
-viewModel = new ViewModelProvider(this, factory).get(FarmDetailsViewModel.class);
+package com.kisanhub.fragments;
 
-viewModel.getTransactions().observe(getViewLifecycleOwner(), transactions -> {
-    // Update adapter and recalculate summary card
-    // ...
-});
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import com.kisanhub.databinding.FragmentFarmDetailsBinding;
 
-binding.fabAddTransaction.setOnClickListener(v -> {
-    // Navigate to AddTransactionFragment, passing the farmId
-    NavDirections action = FarmDetailsFragmentDirections.actionFarmDetailsFragmentToAddTransactionFragment(farmId);
-    NavHostFragment.findNavController(this).navigate(action);
-});
+public class FarmDetailsFragment extends Fragment {
+
+    private FragmentFarmDetailsBinding binding;
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentFarmDetailsBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+}
