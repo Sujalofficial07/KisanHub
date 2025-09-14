@@ -1,3 +1,8 @@
+package com.kisanhub.database.entity;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 @Entity(tableName = "users")
 public class User {
     @PrimaryKey(autoGenerate = true)
