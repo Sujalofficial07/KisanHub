@@ -1,59 +1,61 @@
-name: Android CI Build
+# A name for the workflow, which will be displayed in the Actions tab of your GitHub repository.
+name: Build KisanHub Android App
 
-# Controls when the workflow will run
+# Configure the trigger for this workflow.
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # Run on pushes to the 'main' branch.
   push:
     branches: [ "main" ]
+  # Run on pull requests targeting the 'main' branch.
   pull_request:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
+  # Allow manual triggering from the GitHub Actions UI.
   workflow_dispatch:
 
+# Define the jobs to be executed.
 jobs:
-  build:
-    # The type of runner that the job will run on
+  # A single job named 'build-apk'.
+  build-apk:
+    # Use the latest version of Ubuntu as the runner environment.
     runs-on: ubuntu-latest
 
+    # Define the sequence of steps for this job.
     steps:
-      # Step 1: Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout code
+      # Step 1: Check out your repository code.
+      # This is a mandatory first step for the workflow to access your project files.
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up JDK 17, which is required for modern Android development
+      # Step 2: Set up the Java Development Kit (JDK).
+      # Android builds require a specific version of the JDK. Version 17 is standard for modern Android.
+      # This step also configures caching for Gradle dependencies to speed up subsequent builds.
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: 'gradle'
 
-      # Step 3: Setup Gradle caching to speed up future builds
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      # Step 3: Make the Gradle Wrapper executable.
+      # The 'gradlew' file needs execute permissions to run. This is a crucial step.
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
 
-      # Step 4: Grant execute permission for the Gradle wrapper
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      # Step 5: Run the `build` task to check for compilation errors and run unit tests
-      - name: Build with Gradle
-        run: ./gradlew build
-
-      # Step 6: Run the `assembleDebug` task to create the debug APK
-      - name: Assemble Debug APK
+      # Step 4: Build the debug APK.
+      # The 'assembleDebug' task compiles the code and packages it into an APK file.
+      # This single command handles the entire build process.
+      - name: Build debug APK
         run: ./gradlew assembleDebug
 
-      # Step 7: Upload the generated APK as a build artifact
-      # THIS IS THE CORRECTED STEP
-      - name: Upload APK Artifact
+      # Step 5: Upload the generated APK as an artifact.
+      # This makes the APK file available for download from the workflow summary page.
+      # Uses the corrected and current 'v4' of the action.
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          # Name of the artifact to be uploaded
-          name: KisanHub-Debug-APK
-          # Path to the file(s) to upload
+          # The name of the artifact in the GitHub UI.
+          name: KisanHub-debug.apk
+          # The path to the file to be uploaded. This is the standard output path for a debug APK.
           path: app/build/outputs/apk/debug/app-debug.apk
-          # How long to retain the artifact (in days)
-          retention-days: 7
-
-```
+          # The number of days to retain the artifact before it's automatically deleted.
+          retention-days: 5
