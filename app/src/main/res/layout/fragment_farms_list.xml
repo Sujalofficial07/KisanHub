@@ -1,0 +1,20 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout ...>
+
+    <com.google.android.material.appbar.AppBarLayout ...>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            app:title="My Farms"
+            ... />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_farms"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        ... />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_farm"
+        android:src="@drawable/ic_add"
+        ... />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
