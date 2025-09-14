@@ -1,0 +1,43 @@
+<androidx.constraintlayout.widget.ConstraintLayout ...>
+
+    <TextView
+        android:id="@+id/textView_title"
+        android:text="Welcome Back!"
+        style="@style/TextAppearance.Material3.HeadlineLarge"
+        ... />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_username"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:hint="Username"
+        app:startIconDrawable="@drawable/ic_person"
+        ...>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_password"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:hint="Password"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:passwordToggleEnabled="true"
+        ...>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_signup"
+        android:text="Signup"
+        ... />
+
+    <TextView
+        android:id="@+id/textView_login_prompt"
+        android:text="Already have an account? Login"
+        ... />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
