@@ -7,7 +7,7 @@ import com.kisanhub.database.entity.User;
 import java.util.function.Consumer;
 
 public class UserRepository {
-    private UserDao userDao;
+    private final UserDao userDao;
 
     public UserRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
