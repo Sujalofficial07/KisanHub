@@ -1,0 +1,31 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout ...>
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_farm_details"
+            app:title="Farm Name" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout android:orientation="vertical" ...>
+        <!-- Summary Card -->
+        <com.google.android.material.card.MaterialCardView ...>
+            <!-- Views for Net Profit, Total Income, Total Expenses -->
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Transaction Filters (using MaterialButtonToggleGroup) -->
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggle_button_group" ...>
+            <Button android:id="@+id/button_all" android:text="All"/>
+            <Button android:id="@+id/button_income" android:text="Income"/>
+            <Button android:id="@+id/button_expenses" android:text="Expenses"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <!-- Transactions List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_transactions" ... />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_transaction"
+        android:src="@drawable/ic_add_transaction" ... />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
