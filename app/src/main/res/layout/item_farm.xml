@@ -1,0 +1,17 @@
+<com.google.android.material.card.MaterialCardView ...>
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp" ...>
+
+        <TextView
+            android:id="@+id/textView_farm_name"
+            android:text="Farm Name - Crop"
+            style="@style/TextAppearance.Material3.TitleMedium" />
+
+        <TextView
+            android:id="@+id/textView_farm_profit_loss"
+            android:text="Profit: ₹5,000"
+            android:textStyle="bold"
+            style="@style/TextAppearance.Material3.BodyLarge" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
