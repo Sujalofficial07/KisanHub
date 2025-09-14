@@ -1,3 +1,11 @@
+package com.kisanhub.repositories;
+
+import android.app.Application;
+import com.kisanhub.database.AppDatabase;
+import com.kisanhub.database.dao.UserDao;
+import com.kisanhub.database.entity.User;
+import java.util.function.Consumer;
+
 public class UserRepository {
     private UserDao userDao;
 
@@ -6,7 +14,6 @@ public class UserRepository {
         userDao = db.userDao();
     }
 
-    // Using an ExecutorService for background operations
     public void signup(User user, Consumer<Boolean> callback) {
         AppDatabase.databaseWriteExecutor.execute(() -> {
             if (userDao.getUser(user.username) == null) {
