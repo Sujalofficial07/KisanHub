@@ -2,27 +2,23 @@ package com.kisanhub.database.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
-import com.kisanhub.database.entity.Farm;
+import com.kisanhub.database.entity.Transaction;
 import java.util.List;
 
 @Dao
-public interface FarmDao {
+public interface TransactionDao {
     @Insert
-    void insert(Farm farm);
+    void insert(Transaction transaction);
 
-    @Update
-    void update(Farm farm);
+    @Query("SELECT * FROM transactions WHERE farmId = :farmId ORDER BY date DESC")
+    LiveData<List<Transaction>> getTransactionsForFarm(int farmId);
 
-    @Delete
-    void delete(Farm farm);
+    @Query("SELECT SUM(amount) FROM transactions WHERE farmId IN (SELECT id FROM farms WHERE userId = :userId) AND type = 'income'")
+    LiveData<Double> getTotalIncomeForUser(int userId);
 
-    @Query("SELECT * FROM farms WHERE userId = :userId ORDER BY name ASC")
-    LiveData<List<Farm>> getFarmsForUser(int userId);
-
-    @Query("SELECT COUNT(*) FROM farms WHERE userId = :userId")
-    LiveData<Integer> getFarmCountForUser(int userId);
+    // THIS IS THE CORRECTED LINE
+    @Query("SELECT SUM(amount) FROM transactions WHERE farmId IN (SELECT id FROM farms WHERE userId = :userId) AND type = 'expense'")
+    LiveData<Double> getTotalExpensesForUser(int userId);
 }
