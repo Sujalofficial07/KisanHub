@@ -1,0 +1,29 @@
+<LinearLayout android:orientation="vertical" ...>
+    <com.google.android.material.textfield.TextInputLayout
+        android:hint="Amount" ...>
+        <TextInputEditText android:id="@+id/editText_amount" android:inputType="numberDecimal"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:hint="Description" ...>
+        <TextInputEditText android:id="@+id/editText_description"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Category (Spinner or AutoCompleteTextView) -->
+    <Spinner android:id="@+id/spinner_category" ... />
+
+    <!-- Type (Income/Expense) -->
+    <RadioGroup android:id="@+id/radioGroup_type" ...>
+        <RadioButton android:id="@+id/radio_income" android:text="Income"/>
+        <RadioButton android:id="@+id/radio_expense" android:text="Expense"/>
+    </RadioGroup>
+
+    <!-- Date Picker -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_date_picker"
+        android:text="Select Date" ... />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_save_transaction"
+        android:text="Save Transaction" ... />
+</LinearLayout>
