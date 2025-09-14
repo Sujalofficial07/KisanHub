@@ -1,10 +1,19 @@
-public class FarmsListViewModel extends AndroidViewModel {
-    private FarmRepository farmRepository;
-    private LiveData<List<Farm>> allFarms;
-    // Assume userId is available
-    private int userId = 1;
+package com.kisanhub.viewmodels;
 
-    public FarmsListViewModel(Application application) {
+import android.app.Application;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import com.kisanhub.database.entity.Farm;
+import com.kisanhub.repositories.FarmRepository;
+import java.util.List;
+
+public class FarmsListViewModel extends AndroidViewModel {
+    private final FarmRepository farmRepository;
+    private final LiveData<List<Farm>> allFarms;
+    private final int userId = 1; // Placeholder user ID
+
+    public FarmsListViewModel(@NonNull Application application) {
         super(application);
         farmRepository = new FarmRepository(application);
         allFarms = farmRepository.getFarms(userId);
