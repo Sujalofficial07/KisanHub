@@ -18,6 +18,7 @@ public interface TransactionDao {
     @Query("SELECT SUM(amount) FROM transactions WHERE farmId IN (SELECT id FROM farms WHERE userId = :userId) AND type = 'income'")
     LiveData<Double> getTotalIncomeForUser(int userId);
 
-    @Query.Query("SELECT SUM(amount) FROM transactions WHERE farmId IN (SELECT id FROM farms WHERE userId = :userId) AND type = 'expense'")
+    // THIS IS THE CORRECTED LINE
+    @Query("SELECT SUM(amount) FROM transactions WHERE farmId IN (SELECT id FROM farms WHERE userId = :userId) AND type = 'expense'")
     LiveData<Double> getTotalExpensesForUser(int userId);
 }
