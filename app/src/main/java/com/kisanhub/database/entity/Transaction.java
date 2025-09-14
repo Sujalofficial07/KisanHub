@@ -1,3 +1,9 @@
+package com.kisanhub.database.entity;
+
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
 @Entity(tableName = "transactions", foreignKeys = @ForeignKey(entity = Farm.class,
         parentColumns = "id",
         childColumns = "farmId",
@@ -8,7 +14,7 @@ public class Transaction {
     public int farmId;
     public double amount;
     public String description;
-    public String category; // e.g., Seeds, Labour, etc.
-    public String type;     // "income" or "expense"
-    public long date;       // Timestamp
+    public String category;
+    public String type; // "income" or "expense"
+    public long date;   // Timestamp
 }
