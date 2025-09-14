@@ -1,18 +1,26 @@
-// Inside onCreateView and after setting up view model...
+package com.kisanhub.fragments;
 
-binding.buttonSaveTransaction.setOnClickListener(v -> {
-    // 1. Get all values from the form fields
-    // 2. Perform validation
-    // 3. Create a new Transaction object
-    Transaction newTransaction = new Transaction();
-    newTransaction.farmId = farmId; // Retrieved from navigation arguments
-    newTransaction.amount = Double.parseDouble(binding.editTextAmount.getText().toString());
-    // ... set other fields
-    
-    // 4. Save using the ViewModel
-    viewModel.insert(newTransaction);
-    
-    // 5. Show confirmation and navigate back
-    Snackbar.make(v, "Transaction saved", Snackbar.LENGTH_SHORT).show();
-    NavHostFragment.findNavController(this).popBackStack();
-});
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import com.kisanhub.databinding.FragmentAddTransactionBinding;
+
+public class AddTransactionFragment extends Fragment {
+
+    private FragmentAddTransactionBinding binding;
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentAddTransactionBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+}
