@@ -1,36 +1,23 @@
-// Inside onCreateView of ProfileFragment
-profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+package com.kisanhub.fragments;
 
-profileViewModel.getFarmCount().observe(getViewLifecycleOwner(), count -> {
-    binding.textViewTotalFarms.setText("Total Farms: " + count);
-});
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-profileViewModel.getTotalIncome().observe(getViewLifecycleOwner(), income -> {
-    // Handle null case
-    double totalIncome = (income == null) ? 0 : income;
-    binding.textViewTotalIncome.setText("Total Income: ₹" + totalIncome);
-    updateNetProfit();
-});
+// import com.kisanhub.databinding.FragmentProfileBinding;
 
-profileViewModel.getTotalExpenses().observe(getViewLifecycleOwner(), expenses -> {
-    double totalExpenses = (expenses == null) ? 0 : expenses;
-    binding.textViewTotalExpenses.setText("Total Expenses: ₹" + totalExpenses);
-    updateNetProfit();
-});
+public class ProfileFragment extends Fragment {
+    
+    // private FragmentProfileBinding binding;
 
-// Helper method to update Net Profit
-private void updateNetProfit() {
-    Double income = profileViewModel.getTotalIncome().getValue();
-    Double expenses = profileViewModel.getTotalExpenses().getValue();
-    double totalIncome = (income == null) ? 0 : income;
-    double totalExpenses = (expenses == null) ? 0 : expenses;
-    double netProfit = totalIncome - totalExpenses;
-
-    if (netProfit >= 0) {
-        binding.textViewNetProfit.setText("Net Profit: ₹" + netProfit);
-        binding.textViewNetProfit.setTextColor(getResources().getColor(R.color.profit_green, null));
-    } else {
-        binding.textViewNetProfit.setText("Net Loss: ₹" + Math.abs(netProfit));
-        binding.textViewNetProfit.setTextColor(getResources().getColor(R.color.loss_red, null));
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // return a placeholder to allow compilation
+        return new View(getContext());
     }
 }
