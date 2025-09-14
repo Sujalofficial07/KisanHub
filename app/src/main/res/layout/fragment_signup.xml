@@ -8,8 +8,6 @@
     android:padding="16dp"
     tools:context=".fragments.SignupFragment">
 
-    <!-- This layout is intentionally very similar to the Login screen for consistency -->
-
     <TextView
         android:id="@+id/textView_title_signup"
         style="@style/TextAppearance.Material3.HeadlineLarge"
@@ -27,7 +25,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Username"
-        app:startIconDrawable="@android:drawable/ic_menu_myplaces"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +41,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="Password"
-        app:startIconDrawable="@android:drawable/ic_lock_lock"
         app:passwordToggleEnabled="true"
         app:layout_constraintTop_toBottomOf="@id/textField_username_signup"
         app:layout_constraintStart_toStartOf="parent"
