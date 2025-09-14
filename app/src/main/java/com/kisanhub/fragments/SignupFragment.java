@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment;
 import com.kisanhub.databinding.FragmentSignupBinding;
 
 public class SignupFragment extends Fragment {
-
     private FragmentSignupBinding binding;
 
     @Override
