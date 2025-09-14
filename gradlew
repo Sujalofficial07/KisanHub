@@ -104,8 +104,8 @@ Please set the JAVA_HOME variable in your environment to match the
 location of your Java installation."
 fi
 
-# Set standard commands for invoking Java.
-JAVACMD="\"$JAVACMD\""
+# THIS IS THE FIX: The line that previously added extra quotes has been removed.
+# JAVACMD="\"$JAVACMD\"" <-- THIS LINE IS GONE
 
 # Increase the maximum number of open file descriptors to prevent
 # "Too many open files" errors during compilation.
@@ -132,10 +132,10 @@ fi
 CLASSPATH="$APP_HOME/gradle/wrapper/gradle-wrapper.jar"
 
 # Split up the JVM options string into an array, following the shell quoting and substitution rules
-function splitJovmOpts() {
+function splitJvmOpts() {
     JVM_OPTS=("$@")
 }
-eval splitJovmOpts $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS
+eval splitJvmOpts $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS
 
 # Escape the parameters
 JVM_OPTS_ESCAPED=()
@@ -144,4 +144,4 @@ for ((i=0; i < ${#JVM_OPTS[@]}; i++)); do
 done
 
 # Execute Gradle
-exec $JAVACMD "${JVM_OPTS_ESCAPED[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
+exec "$JAVACMD" "${JVM_OPTS_ESCAPED[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
